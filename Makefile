@@ -11,6 +11,9 @@ migrateup:
 		migrate -path db/migration -database "postgresql://root:superM@n04@localhost:5432/ecommerce-2021?sslmode=disable" -verbose up
 
 migratedown:
-		migrate -path db/migration -database "postgresql://root:superM@n04@localhost:5432/ecommerce-2021?sslmode=disable" -verbose down
+		migrate -path db/migration -data  base "postgresql://root:superM@n04@localhost:5432/ecommerce-2021?sslmode=disable" -verbose down
 
-.PHONY: postgres createdb dropdb migrateup migratedown
+sqlc:
+		sqlc generate
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc
